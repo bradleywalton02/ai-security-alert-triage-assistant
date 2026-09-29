@@ -1,0 +1,75 @@
+[
+  {
+    "alert_id": "ALERT-1001",
+    "timestamp": "2026-09-25T14:22:31Z",
+    "source": "EDR",
+    "severity": "high",
+    "title": "Suspicious PowerShell execution",
+    "description": "powershell.exe launched with an encoded command from a user workstation shortly after a downloaded archive was opened.",
+    "host": "WS-FIN-042",
+    "user": "jsmith",
+    "source_ip": "10.10.24.42",
+    "confidence": 0.88,
+    "tags": ["powershell", "encoded_command", "endpoint"]
+  },
+  {
+    "alert_id": "ALERT-1002",
+    "timestamp": "2026-09-25T15:05:10Z",
+    "source": "Identity Provider",
+    "severity": "medium",
+    "title": "Repeated failed logins followed by success",
+    "description": "Nine failed sign-in attempts were followed by one successful sign-in for the same user from the same unfamiliar IP address.",
+    "user": "mgarcia",
+    "source_ip": "198.51.100.24",
+    "confidence": 0.72,
+    "tags": ["authentication", "login", "failed_logins"]
+  },
+  {
+    "alert_id": "ALERT-1003",
+    "timestamp": "2026-09-25T16:18:44Z",
+    "source": "Email Security",
+    "severity": "low",
+    "title": "Suspicious attachment blocked",
+    "description": "An inbound message contained a blocked executable attachment. The attachment was quarantined before delivery.",
+    "user": "rlee",
+    "confidence": 0.93,
+    "tags": ["email", "attachment", "quarantined"]
+  },
+  {
+    "alert_id": "ALERT-1004",
+    "timestamp": "2026-09-25T17:41:03Z",
+    "source": "File Monitoring",
+    "severity": "critical",
+    "title": "Rapid mass file modification",
+    "description": "A workstation modified 2,418 documents in 90 seconds and many filenames gained the same new extension.",
+    "host": "WS-OPS-017",
+    "user": "akhan",
+    "confidence": 0.96,
+    "tags": ["ransomware", "mass_file_change", "endpoint"]
+  },
+  {
+    "alert_id": "ALERT-1005",
+    "timestamp": "2026-09-25T18:12:20Z",
+    "source": "DNS Security",
+    "severity": "medium",
+    "title": "Connection to newly observed domain",
+    "description": "A workstation made repeated DNS requests to a domain first observed by the sensor today. No malware verdict is available.",
+    "host": "WS-HR-008",
+    "destination_ip": "203.0.113.55",
+    "confidence": 0.58,
+    "tags": ["dns", "new_domain"]
+  },
+  {
+    "alert_id": "ALERT-1006",
+    "timestamp": "2026-09-25T19:23:39Z",
+    "source": "EDR",
+    "severity": "high",
+    "title": "UAC Bypass and Privilege Escalation",
+    "description": "User launched fodhelper.exe, which can auto-elevate without a UAC prompt. A recent modification to the user's ms-settings registry data suggests it may have been used to launch a PowerShell payload and bypass User Account Control.",
+    "host": "WS-IT-017",
+    "user": "jdoe",
+    "source_ip": "10.10.36.83",
+    "confidence": 0.92,
+    "tags": ["privilege_escalation", "powershell", "uac_bypass"]
+  }
+]
