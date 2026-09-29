@@ -46,6 +46,10 @@ After building the initial version, I made several improvements based on testing
 
 > **Important:** This is an educational portfolio project, not an autonomous incident-response system. AI output can be wrong. Every result is marked for human review.
 
+## Dashboard
+
+![AI Security Alert Triage Assistant dashboard](docs/dashboard.png)
+
 ## What it demonstrates
 
 - Python
