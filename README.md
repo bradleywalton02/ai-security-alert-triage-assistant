@@ -2,6 +2,48 @@
 
 A defensive cybersecurity portfolio project that uses generative AI to turn raw security alerts into an analyst-facing triage draft. It also uses **pandas** to clean and summarize a batch of alerts and provides a small Streamlit dashboard for demonstration.
 
+## Example: Rule-Based vs. Generative AI Triage
+
+To evaluate the value of generative AI, I created a synthetic EDR alert involving:
+
+- `fodhelper.exe`
+- an `ms-settings` registry modification
+- possible PowerShell execution
+- suspected UAC bypass / privilege escalation
+
+### Rule-Based Result
+
+The local rule-based system detected the `powershell` keyword and classified the alert as:
+
+- Category: Suspicious command execution
+- MITRE ATT&CK: T1059.001 — PowerShell
+- Priority: P2
+
+This demonstrated a limitation of simple keyword matching because it did not identify the broader privilege-escalation behavior.
+
+### Generative AI Result
+
+The AI-assisted triage identified:
+
+- Category: Suspected privilege escalation / UAC bypass
+- MITRE ATT&CK: T1548.002 — Bypass User Account Control
+- Priority: P2
+- Explicit uncertainties about whether elevation or payload execution actually succeeded
+
+The generative model connected multiple pieces of context while distinguishing confirmed evidence from unverified conclusions.
+
+Human review is still required for every result.
+
+## Improvements I Made
+
+After building the initial version, I made several improvements based on testing:
+
+- Added a more complex synthetic privilege-escalation alert in JSON.
+- Added an explicit `uncertainties` field to separate confirmed evidence from inference.
+- Replaced prompt-only JSON formatting with JSON Schema Structured Outputs after the model omitted a requested field.
+- Added a pandas metric for counting high- and critical-severity alerts.
+- Added automated test coverage for the new analytics behavior.
+
 > **Important:** This is an educational portfolio project, not an autonomous incident-response system. AI output can be wrong. Every result is marked for human review.
 
 ## What it demonstrates
@@ -132,7 +174,6 @@ The included alerts are fictional and use documentation-range IP addresses where
 
 ## Suggested next improvements
 
-- Add a JSON Schema or structured-output layer for stricter model responses.
 - Add analyst feedback (correct / incorrect / partially correct) and measure quality.
 - Compare source severity to AI-recommended priority.
 - Add a second synthetic dataset and benchmark results.
