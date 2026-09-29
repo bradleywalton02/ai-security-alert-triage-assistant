@@ -61,6 +61,20 @@ It gives an analyst a quick view of how many alerts in the current dataset may r
 How I tested it:
 I updated the analytics unit test to verify that a dataset containing one critical alert and one low-severity alert returns one high-priority alert. I also confirmed that the dashboard correctly showed three high-priority alerts in the six-alert sample dataset.
 
+## Change 4 — Analyst Interface
+
+**What I changed:**  
+Replaced the raw JSON-only analyst output with a more readable Streamlit interface showing recommended priority, confidence, summary, category, MITRE ATT&CK mappings, and collapsible sections for uncertainties, evidence, investigation steps, remediation actions, rationale, and full JSON.
+
+**Why:**  
+The original interface exposed the model response as one large JSON block, which was difficult to scan. I wanted the output to be easier for an analyst to review quickly while still preserving the complete structured response for transparency and debugging.
+
+**How I tested it:**  
+I reran ALERT-1006 and confirmed that the same structured triage data was still available while the most important information was easier to read in the dashboard.
+
+**What I learned:**  
+Good security tooling is not only about generating useful analysis; the information also needs to be presented in a way that supports quick human review.
+
 ## AI coding assistant review example
 
 Use your real experience, not this wording verbatim.
